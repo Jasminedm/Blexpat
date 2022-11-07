@@ -1,0 +1,42 @@
+
+
+.indexBody{
+  padding-top:80px;
+  word-wrap:break-word;
+  background-image: url('img/oveerlookphoto.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.loginBody{
+  padding-top:80px;
+  word-wrap:break-word;
+  background-image: url('img/black\ couple.jpeg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.signupBody{
+  padding-top:80px;
+  word-wrap:break-word;
+  background-image: url('img/couplebeeach.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.header{
+  
+}
+
+.jumbotron{
+  background-color: rgba(240, 227, 227, 0.5);
+}
+img{
+  height: 200px;
+}
+svg{
+  color: white;
+}
