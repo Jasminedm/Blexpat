@@ -1,6 +1,7 @@
 // config/database.js
+require("dotenv").config({ path: "./config/.env" });
 module.exports = {
 
-    'url' : 'mongodb+srv://jasminedm:jdmmongodb@cluster0.0xxrpxp.mongodb.net/Blexpat?retryWrites=true&w=majority', 
-    'dbName': 'Blexpat'
+    'url' : process.env.DB_STRING, 
+    'dbName': process.env.DB_NAME 
 };

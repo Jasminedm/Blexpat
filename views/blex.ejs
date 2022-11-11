@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blexstyle.css">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -52,8 +53,59 @@
         </div>
       </div>
       <!-- END OF HEADER -->
-<h2>Blex</h2>
+<br><br><br><br><br>
 
+<form action="/blog" method="post" enctype="multipart/form-data">
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2><input type="text" class="blogInputs" name="blexHeading" placeholder="Blex Heading"></h2>
+      <h5><input type="text" class="blogInputs" name="destination" placeholder="Destination"></h5>
+      <input type="date" name="date">
+        <input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg" name="blexImg">
+        <div id="display-image"></div>
+      <p>
+        <input class="personalEx" type="text" name="personalExperience" placeholder="Tell the Blexpat community about your experience and help others find their way to their next home!">
+      </p>
+      <button type="submit">Post My Blex</button>
+</form>
+    </div>
+    
+      <% for(let i = 0; i < blexdata.length; i++){ %>
+      <div class="card" id="<%= blexdata[i]._id%> ">
+      <h2><%= blexdata[i].header %></h2>
+      <h5><%= blexdata[i].destination %>, <%= blexdata[i].date %></h5>
+      <div class="fakeimg" style="height:200px;"><img src="<%= blexdata[i].img %>" alt=""></div>
+      <input type="text" value="<%= blexdata[i].personalEx %>" class="blogInputs"><button class="edit blogInputs">✏️</button>
+      <button class="delete">🗑</button>
+      </div>
+      <% } %>
+    
+  </div>
+
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <input type="file" id="profileImage-input" accept="image/jpeg, image/png, image/jpg">
+        <div id="display-image" class="profilePic"></div>
+      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+    </div>
+    <div class="card">
+      <h3>Popular Post</h3>
+      <div class="fakeimg">Image</div><br>
+      <div class="fakeimg">Image</div><br>
+      <div class="fakeimg">Image</div>
+    </div>
+    <!-- <div class="card">
+      <h3>Follow Me</h3>
+      <p>Some text..</p>
+    </div> -->
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Footer</h2>
+</div>
 <script src="main.js"></script>
 </body>
 </html>

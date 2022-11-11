@@ -14,7 +14,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-
+require("dotenv").config({ path: "./config/.env" });
 var configDB = require('./config/database.js');
 
 var db
