@@ -19,11 +19,14 @@ module.exports = function (app, passport, db) {
 
   // LOGOUT ==============================
   app.get("/blex", isLoggedIn, function (req, res) {
+    console.log('get/blex')
     db.collection('blog').find().toArray((err, result) => {
       if (err) return console.log(err)
+      console.log(req.user.local.img)
       res.render('blex.ejs', {
         user : req.user,
-        blexdata: result
+        blexdata: result,
+        img: req.user.local.img
       })
     })
   });
@@ -58,13 +61,35 @@ module.exports = function (app, passport, db) {
     );
   });
 
+  app.post("/profilePic", isLoggedIn, upload.single('profilePic'), async (req, res) => {
+    const image = await cloudinary.uploader.upload(req.file.path)
+    console.log(req.body)
+    db.collection("users").findOneAndUpdate(      
+      { _id: req.user._id },
+      {
+        $set: {
+          'local.img': image.url
+        }
+        
+      },
+      {
+        sort: { _id: -1 }
+      },
+      (err, result) => {     
+        if (err) return console.log(err);
+       // console.log("saved to database");
+        res.redirect("/blex");
+      }
+    );
+  });
+
   app.put("/edit", (req, res) => {
     db.collection("blog").findOneAndUpdate(
       { _id: ObjectId(req.body._id)},
       {
         $set: {
           personalEx: req.body.newText
-        },
+        }
       },
       {
         sort: { _id: -1 }

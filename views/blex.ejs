@@ -64,7 +64,7 @@
       <h5><input type="text" class="blogInputs" name="destination" placeholder="Destination"></h5>
       <input type="date" name="date">
         <input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg" name="blexImg">
-        <div id="display-image"></div>
+        <div class="display-image"></div>
       <p>
         <input class="personalEx" type="text" name="personalExperience" placeholder="Tell the Blexpat community about your experience and help others find their way to their next home!">
       </p>
@@ -76,19 +76,24 @@
       <div class="card" id="<%= blexdata[i]._id%> ">
       <h2><%= blexdata[i].header %></h2>
       <h5><%= blexdata[i].destination %>, <%= blexdata[i].date %></h5>
-      <div class="fakeimg" style="height:200px;"><img src="<%= blexdata[i].img %>" alt=""></div>
+      <div class="fakeimg display-image" style="height:200px; background-image: url('<%= blexdata[i].img %>');"></div>
       <input type="text" value="<%= blexdata[i].personalEx %>" class="blogInputs"><button class="edit blogInputs">✏️</button>
       <button class="delete">🗑</button>
       </div>
       <% } %>
-    
   </div>
 
   <div class="rightcolumn">
     <div class="card">
       <h2>About Me</h2>
-      <input type="file" id="profileImage-input" accept="image/jpeg, image/png, image/jpg">
-        <div id="display-image" class="profilePic"></div>
+      <form action="/profilePic" method="post" enctype="multipart/form-data">
+      <input type="file" id="profileImage-input" accept="image/jpeg, image/png, image/jpg" name="profilePic">
+      
+      
+      
+        <div id="display-image" class="profilePic" style="background-image: url('<%= img %>');"></div>
+        <button>Update Profile Pic</button>
+      </form>
       <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
     </div>
     <div class="card">
